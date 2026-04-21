@@ -1,16 +1,9 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
-from fastapi.staticfiles import StaticFiles
-from fastapi.responses import FileResponse
 import re
 
 app = FastAPI()
-app.mount("/static", StaticFiles(directory="Static"), name="static")
-
-@app.get("/")
-def root():
-    return FileResponse("Static/index.html")
 
 
 app.add_middleware(
